@@ -84,14 +84,16 @@ df = (
     .pipe(pandas.DataFrame, columns=["date", "occupancy"])
     .pipe(pandas.DataFrame.set_index, "date")).it
 
-path = 
-df.to_csv("")
+df.to_csv("data.csv")
 
 last = df.loc[df.index.max()].occupancy
+
+plt.figure(figsize=(15, 15))
 ax = df.plot()
 ax.set_ylim(0, 100)
 plt.axhline(last, color="red")
 plt.title("Taxa de ocupacão de leitos de UTI em Campinas")
 plt.grid(True)
 plt.tight_layout()
-plt.show()
+plt.savefig("data.png")
+# plt.show()
